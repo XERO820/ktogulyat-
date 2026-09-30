@@ -37,7 +37,6 @@
 
   h1 { margin: 0 0 18px; font-size: 24px; text-align: center; }
 
-  /* ---------- вкладки ---------- */
   .tabs {
     display: flex;
     background: rgba(0,0,0,0.25);
@@ -59,7 +58,6 @@
   }
   .tab.active { background: #2563eb; color: #fff; }
 
-  /* ---------- форма ---------- */
   label {
     display: block;
     font-size: 13px;
@@ -68,7 +66,7 @@
   }
   .hint { font-size: 12px; color: #64748b; margin-top: 5px; }
 
-  input {
+  input, select {
     width: 100%;
     padding: 12px 14px;
     border-radius: 11px;
@@ -79,7 +77,12 @@
     outline: none;
     transition: .2s;
   }
-  input:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(37,99,235,.25); }
+  input:focus, select:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37,99,235,.25);
+  }
+  select { appearance: none; cursor: pointer; }
+  select option { background: #0f172a; color: #fff; }
 
   .btn {
     width: 100%;
@@ -95,6 +98,45 @@
   .btn.primary { background: #2563eb; color: #fff; }
   .btn.primary:hover { background: #1d4ed8; }
 
+  .btn.ghost {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.14);
+    color: #94a3b8;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  .btn.ghost:hover { background: rgba(255,255,255,0.07); }
+
+  .link-btn {
+    display: block;
+    width: 100%;
+    margin-top: 14px;
+    background: none;
+    border: 0;
+    color: #60a5fa;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 8px;
+    text-align: center;
+  }
+  .link-btn:hover { text-decoration: underline; }
+
+  .admin-link {
+    display: block;
+    width: 100%;
+    margin-top: 4px;
+    background: none;
+    border: 0;
+    color: #64748b;
+    font-size: 12px;
+    cursor: pointer;
+    padding: 6px;
+    text-align: center;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .admin-link:hover { color: #94a3b8; }
+
   .msg {
     margin-top: 14px;
     font-size: 14px;
@@ -103,6 +145,31 @@
     text-align: center;
   }
   .msg.ok { color: #4ade80; }
+
+  .steps {
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: #64748b;
+    margin-bottom: 14px;
+  }
+
+  .qbox {
+    background: rgba(37,99,235,.12);
+    border: 1px solid rgba(37,99,235,.3);
+    border-radius: 12px;
+    padding: 14px;
+    margin-bottom: 6px;
+  }
+  .qlabel {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: #60a5fa;
+    margin-bottom: 5px;
+  }
+  .qtext { font-size: 16px; font-weight: 600; }
 
   /* ---------- главный экран ---------- */
   .topbar {
@@ -150,6 +217,22 @@
   .choice.active.pending { background: #ca8a04; border-color: #ca8a04; color: #fff; }
   .choice.active.no      { background: #dc2626; border-color: #dc2626; color: #fff; }
 
+  .walk-btn {
+    width: 100%;
+    margin-top: 18px;
+    padding: 15px;
+    border-radius: 13px;
+    border: 1px solid rgba(74,222,128,.35);
+    background: rgba(22,163,74,.14);
+    color: #4ade80;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .2s;
+  }
+  .walk-btn:hover { background: rgba(22,163,74,.26); }
+  .walk-btn.active { background: #16a34a; border-color: #16a34a; color: #fff; }
+
   .stats {
     display: flex;
     gap: 8px;
@@ -171,7 +254,14 @@
 
   .list-title { font-size: 14px; color: #9fb0c7; margin: 18px 0 10px; }
 
-  ul.list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  ul.list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
   li.user {
     display: flex;
     align-items: center;
@@ -198,6 +288,55 @@
   .u-status.pending { color: #facc15; }
 
   .empty { text-align: center; color: #64748b; font-size: 14px; padding: 20px 0; }
+
+  /* ---------- АДМИН-ПАНЕЛЬ ---------- */
+  .admin-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #fbbf24;
+    background: rgba(251,191,36,.12);
+    border: 1px solid rgba(251,191,36,.35);
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+
+  li.admin-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 13px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.045);
+    border: 1px solid rgba(255,255,255,0.07);
+  }
+  .del-btn {
+    flex: 0 0 auto;
+    background: rgba(220,38,38,.18);
+    border: 1px solid rgba(220,38,38,.45);
+    color: #f87171;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 7px 12px;
+    border-radius: 9px;
+    cursor: pointer;
+    transition: .18s;
+    white-space: nowrap;
+  }
+  .del-btn:hover { background: #dc2626; color: #fff; border-color: #dc2626; }
+
+  .admin-info {
+    font-size: 13px;
+    color: #94a3b8;
+    background: rgba(251,191,36,.06);
+    border: 1px solid rgba(251,191,36,.2);
+    border-radius: 10px;
+    padding: 10px 13px;
+    margin-bottom: 16px;
+  }
 </style>
 </head>
 <body>
@@ -207,8 +346,11 @@
 /* ============================================================
    ХРАНИЛИЩЕ (localStorage)
    ============================================================ */
-const USERS_KEY   = 'walk_users_v1';
-const CURRENT_KEY = 'walk_current_v1';
+const USERS_KEY   = 'walk_users_v2';
+const CURRENT_KEY = 'walk_current_v2';
+
+// Пароль для входа в админ-панель
+const ADMIN_PASSWORD = 'ARSENIY228';
 
 function getUsers() {
   try { return JSON.parse(localStorage.getItem(USERS_KEY)) || []; }
@@ -226,12 +368,16 @@ function setCurrent(name) {
 /* ============================================================
    ПРАВИЛА ПРОВЕРКИ
    ============================================================ */
-// Имя: только русские буквы, 2–20 символов
 const NAME_RE = /^[А-Яа-яЁё]{2,20}$/;
-
-// Пароль: 4–32 символа, только русские/английские буквы и цифры,
-//         и обязательно хотя бы одна цифра
 const PASS_RE = /^(?=.*[0-9])[A-Za-zА-Яа-яЁё0-9]{4,32}$/;
+
+const QUESTIONS = [
+  'Девичья фамилия матери?',
+  'Кличка первого питомца?',
+  'Город, в котором вы родились?',
+  'Ваше любимое блюдо?',
+  'Имя лучшего друга детства?'
+];
 
 const STATUS_TEXT = {
   yes:     '✅ Пойдёт гулять',
@@ -239,8 +385,13 @@ const STATUS_TEXT = {
   no:      '❌ Не пойдёт гулять'
 };
 
+const normAnswer = s => String(s).trim().toLowerCase().replace(/\s+/g, ' ');
+
 const esc = s => String(s).replace(/[&<>"']/g,
   c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
+
+// Показывать только тех, кто идёт
+let onlyGoing = false;
 
 /* ============================================================
    РОУТЕР
@@ -260,6 +411,19 @@ function render() {
 /* ============================================================
    ЭКРАН ВХОДА / РЕГИСТРАЦИИ
    ============================================================ */
+function registerExtraHTML() {
+  return `
+    <label for="qSelect">Секретный вопрос</label>
+    <select id="qSelect">
+      ${QUESTIONS.map(q => `<option value="${esc(q)}">${esc(q)}</option>`).join('')}
+    </select>
+
+    <label for="aInput">Ответ на вопрос</label>
+    <input id="aInput" type="text" placeholder="Ваш ответ" autocomplete="off">
+    <div class="hint">Нужен для восстановления пароля. Минимум 2 символа.</div>
+  `;
+}
+
 function renderAuth(app) {
   app.innerHTML = `
     <div class="card">
@@ -279,19 +443,30 @@ function renderAuth(app) {
         <input id="passInput" type="password" placeholder="Например: Гулять2024" autocomplete="off">
         <div class="hint">Буквы (русские или английские) и цифры, минимум одна цифра</div>
 
+        <div id="extraFields"></div>
+
         <div class="msg" id="msg"></div>
         <button type="submit" class="btn primary" id="submitBtn">Войти</button>
       </form>
+
+      <button class="link-btn" id="forgotBtn">Забыли пароль?</button>
+      <button class="admin-link" id="adminBtn">🔒 Админ-панель</button>
     </div>
   `;
 
   let mode = 'login';
-  const form    = document.getElementById('authForm');
-  const nameIn  = document.getElementById('nameInput');
-  const passIn  = document.getElementById('passInput');
-  const msg     = document.getElementById('msg');
-  const submit  = document.getElementById('submitBtn');
-  const tabs    = app.querySelectorAll('.tab');
+  const form   = document.getElementById('authForm');
+  const nameIn = document.getElementById('nameInput');
+  const passIn = document.getElementById('passInput');
+  const extra  = document.getElementById('extraFields');
+  const msg    = document.getElementById('msg');
+  const submit = document.getElementById('submitBtn');
+  const tabs   = app.querySelectorAll('.tab');
+
+  function showError(text) {
+    msg.textContent = text;
+    msg.className = 'msg';
+  }
 
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
@@ -301,13 +476,14 @@ function renderAuth(app) {
       msg.textContent = '';
       msg.className = 'msg';
       passIn.value = '';
+      extra.innerHTML = mode === 'register' ? registerExtraHTML() : '';
     });
   });
 
-  function showError(text) {
-    msg.textContent = text;
-    msg.className = 'msg';
-  }
+  document.getElementById('forgotBtn')
+    .addEventListener('click', () => renderRecover(app));
+  document.getElementById('adminBtn')
+    .addEventListener('click', () => renderAdminLogin(app));
 
   form.addEventListener('submit', e => {
     e.preventDefault();
@@ -315,13 +491,10 @@ function renderAuth(app) {
     const name = nameIn.value.trim();
     const pass = passIn.value;
 
-    // --- проверка имени ---
     if (!NAME_RE.test(name)) {
-      showError('Имя: только русские буквы, от 2 до 20 символов, без пробелов, цифр и знаков.');
+      showError('Имя: только русские буквы, от 2 до 20 символов, без пробелов и цифр.');
       return;
     }
-
-    // --- проверка пароля ---
     if (!PASS_RE.test(pass)) {
       showError('Пароль: 4–32 символа, только буквы и цифры, и хотя бы одна цифра.');
       return;
@@ -330,14 +503,28 @@ function renderAuth(app) {
     const users = getUsers();
 
     if (mode === 'register') {
+      const qSel = document.getElementById('qSelect');
+      const aIn  = document.getElementById('aInput');
+      const answer = normAnswer(aIn ? aIn.value : '');
+
+      if (answer.length < 2) {
+        showError('Ответ на секретный вопрос: минимум 2 символа.');
+        return;
+      }
       if (users.some(u => u.name.toLowerCase() === name.toLowerCase())) {
         showError('Такое имя уже занято, попробуй другое.');
         return;
       }
-      users.push({ name, password: pass, status: 'pending' });
+
+      users.push({
+        name, password: pass, status: 'pending',
+        question: qSel.value, answer
+      });
       saveUsers(users);
       setCurrent(name);
+      onlyGoing = false;
       render();
+
     } else {
       const user = users.find(u => u.name.toLowerCase() === name.toLowerCase());
       if (!user || user.password !== pass) {
@@ -345,8 +532,262 @@ function renderAuth(app) {
         return;
       }
       setCurrent(user.name);
+      onlyGoing = false;
       render();
     }
+  });
+}
+
+/* ============================================================
+   ВОССТАНОВЛЕНИЕ ПАРОЛЯ
+   ============================================================ */
+function renderRecover(app) {
+  const state = { step: 1, user: null };
+
+  function paint() {
+    if (state.step === 1) {
+      app.innerHTML = `
+        <div class="card">
+          <h1>🔑 Восстановление пароля</h1>
+          <div class="steps">Шаг 1 из 3</div>
+
+          <label for="recName">Ваше имя</label>
+          <input id="recName" type="text" placeholder="Например: Иван" autocomplete="off">
+
+          <div class="msg" id="msg"></div>
+          <button class="btn primary" id="nextBtn">Далее</button>
+          <button class="btn ghost" id="backBtn">← Назад ко входу</button>
+        </div>
+      `;
+
+      const nameIn = document.getElementById('recName');
+      const msg    = document.getElementById('msg');
+      nameIn.focus();
+      document.getElementById('backBtn').onclick = () => render();
+
+      const go = () => {
+        const name = nameIn.value.trim();
+        if (!NAME_RE.test(name)) {
+          msg.textContent = 'Имя: только русские буквы, 2–20 символов.';
+          msg.className = 'msg';
+          return;
+        }
+        const user = getUsers()
+          .find(u => u.name.toLowerCase() === name.toLowerCase());
+        if (!user) {
+          msg.textContent = 'Пользователь с таким именем не найден.';
+          msg.className = 'msg';
+          return;
+        }
+        if (!user.question || !user.answer) {
+          msg.textContent = 'Для этого аккаунта не задан секретный вопрос.';
+          msg.className = 'msg';
+          return;
+        }
+        state.user = user;
+        state.step = 2;
+        paint();
+      };
+
+      document.getElementById('nextBtn').onclick = go;
+      nameIn.addEventListener('keydown', e => { if (e.key === 'Enter') go(); });
+    }
+
+    else if (state.step === 2) {
+      app.innerHTML = `
+        <div class="card">
+          <h1>🔑 Восстановление пароля</h1>
+          <div class="steps">Шаг 2 из 3</div>
+
+          <div class="qbox">
+            <div class="qlabel">Секретный вопрос</div>
+            <div class="qtext">${esc(state.user.question)}</div>
+          </div>
+
+          <label for="recAnswer">Ваш ответ</label>
+          <input id="recAnswer" type="text" placeholder="Введите ответ" autocomplete="off">
+
+          <div class="msg" id="msg"></div>
+          <button class="btn primary" id="nextBtn">Проверить</button>
+          <button class="btn ghost" id="backBtn">← Назад</button>
+        </div>
+      `;
+
+      const ansIn = document.getElementById('recAnswer');
+      const msg   = document.getElementById('msg');
+      ansIn.focus();
+      document.getElementById('backBtn').onclick = () => { state.step = 1; paint(); };
+
+      const go = () => {
+        if (normAnswer(ansIn.value) === state.user.answer) {
+          state.step = 3; paint();
+        } else {
+          msg.textContent = 'Неверный ответ. Попробуйте ещё раз.';
+          msg.className = 'msg';
+        }
+      };
+
+      document.getElementById('nextBtn').onclick = go;
+      ansIn.addEventListener('keydown', e => { if (e.key === 'Enter') go(); });
+    }
+
+    else {
+      app.innerHTML = `
+        <div class="card">
+          <h1>🔑 Восстановление пароля</h1>
+          <div class="steps">Шаг 3 из 3</div>
+
+          <div class="hint" style="margin-bottom:6px">
+            Придумайте новый пароль для аккаунта <b>${esc(state.user.name)}</b>.
+          </div>
+
+          <label for="np1">Новый пароль</label>
+          <input id="np1" type="password" autocomplete="off">
+
+          <label for="np2">Повторите пароль</label>
+          <input id="np2" type="password" autocomplete="off">
+          <div class="hint">4–32 символа, буквы и цифры, минимум одна цифра.</div>
+
+          <div class="msg" id="msg"></div>
+          <button class="btn primary" id="nextBtn">Сохранить пароль</button>
+          <button class="btn ghost" id="backBtn">← Назад</button>
+        </div>
+      `;
+
+      const p1  = document.getElementById('np1');
+      const p2  = document.getElementById('np2');
+      const msg = document.getElementById('msg');
+      p1.focus();
+      document.getElementById('backBtn').onclick = () => { state.step = 2; paint(); };
+
+      document.getElementById('nextBtn').onclick = () => {
+        if (!PASS_RE.test(p1.value)) {
+          msg.textContent = 'Пароль: 4–32 символа, буквы и цифры, минимум одна цифра.';
+          msg.className = 'msg';
+          return;
+        }
+        if (p1.value !== p2.value) {
+          msg.textContent = 'Пароли не совпадают.';
+          msg.className = 'msg';
+          return;
+        }
+        const users = getUsers();
+        const u = users.find(x => x.name === state.user.name);
+        if (u) { u.password = p1.value; saveUsers(users); }
+
+        msg.textContent = '✅ Пароль изменён! Сейчас вернём на вход…';
+        msg.className = 'msg ok';
+        setTimeout(() => render(), 1300);
+      };
+    }
+  }
+
+  paint();
+}
+
+/* ============================================================
+   АДМИН: ВХОД ПО ПАРОЛЮ
+   ============================================================ */
+function renderAdminLogin(app) {
+  app.innerHTML = `
+    <div class="card">
+      <div style="text-align:center">
+        <div class="admin-badge">🔒 Вход в админ-панель</div>
+      </div>
+
+      <label for="admPass">Пароль администратора</label>
+      <input id="admPass" type="password" placeholder="Введите пароль" autocomplete="off">
+      <div class="msg" id="msg"></div>
+
+      <button class="btn primary" id="loginBtn">Войти</button>
+      <button class="btn ghost" id="backBtn">← Назад ко входу</button>
+    </div>
+  `;
+
+  const passIn = document.getElementById('admPass');
+  const msg    = document.getElementById('msg');
+  passIn.focus();
+
+  document.getElementById('backBtn').onclick = () => render();
+
+  const go = () => {
+    if (passIn.value === ADMIN_PASSWORD) {
+      renderAdminPanel(app);
+    } else {
+      msg.textContent = 'Неверный пароль администратора.';
+      msg.className = 'msg';
+    }
+  };
+
+  document.getElementById('loginBtn').onclick = go;
+  passIn.addEventListener('keydown', e => { if (e.key === 'Enter') go(); });
+}
+
+/* ============================================================
+   АДМИН-ПАНЕЛЬ: СПИСОК И УДАЛЕНИЕ
+   ============================================================ */
+function renderAdminPanel(app) {
+  const users = getUsers();
+  const current = getCurrent();
+
+  const order = { yes: 0, pending: 1, no: 2 };
+  const sorted = [...users].sort((a, b) =>
+    (order[a.status] - order[b.status]) || a.name.localeCompare(b.name, 'ru')
+  );
+
+  const listHTML = sorted.map(u => `
+    <li class="admin-user">
+      <div class="avatar">${esc(u.name[0])}</div>
+      <div class="u-info">
+        <div class="u-name">
+          ${esc(u.name)}${u.name === current ? ' <span class="you">(сейчас в системе)</span>' : ''}
+        </div>
+        <div class="u-status ${u.status}">${STATUS_TEXT[u.status]}</div>
+      </div>
+      <button class="del-btn" data-name="${esc(u.name)}">Удалить</button>
+    </li>
+  `).join('');
+
+  app.innerHTML = `
+    <div class="card">
+      <div style="text-align:center">
+        <div class="admin-badge">🔒 Админ-панель</div>
+      </div>
+
+      <div class="admin-info">
+        Всего зарегистрировано: <b>${users.length}</b>.
+        Удаление аккаунта нельзя отменить.
+      </div>
+
+      <div class="list-title">Пользователи:</div>
+      <ul class="list">
+        ${listHTML || '<div class="empty">Пока никого нет</div>'}
+      </ul>
+
+      <button class="btn ghost" id="backBtn" style="margin-top:20px">← Выйти из админ-панели</button>
+    </div>
+  `;
+
+  document.getElementById('backBtn').onclick = () => render();
+
+  app.querySelectorAll('.del-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const name = btn.dataset.name;
+      if (!confirm(`Удалить пользователя «${name}»?`)) return;
+
+      let list = getUsers();
+      list = list.filter(u => u.name !== name);
+      saveUsers(list);
+
+      // если удалили себя — разлогинить
+      if (getCurrent() === name) {
+        setCurrent(null);
+        onlyGoing = false;
+        render();
+        return;
+      }
+      renderAdminPanel(app);
+    });
   });
 }
 
@@ -362,19 +803,32 @@ function renderMain(app, current) {
     (order[a.status] - order[b.status]) || a.name.localeCompare(b.name, 'ru')
   );
 
+  const going = sorted.filter(u => u.status === 'yes');
+  const shown = onlyGoing ? going : sorted;
+
   const countYes     = users.filter(u => u.status === 'yes').length;
   const countNo      = users.filter(u => u.status === 'no').length;
   const countPending = users.filter(u => u.status === 'pending').length;
 
-  const listHTML = sorted.map(u => `
+  const listHTML = shown.map(u => `
     <li class="user">
       <div class="avatar">${esc(u.name[0])}</div>
       <div class="u-info">
-        <div class="u-name">${esc(u.name)}${u.name === current ? ' <span class="you">(вы)</span>' : ''}</div>
+        <div class="u-name">
+          ${esc(u.name)}${u.name === current ? ' <span class="you">(вы)</span>' : ''}
+        </div>
         <div class="u-status ${u.status}">${STATUS_TEXT[u.status]}</div>
       </div>
     </li>
   `).join('');
+
+  const emptyText = onlyGoing
+    ? 'Пока никто не собирается гулять 😕'
+    : 'Пока никого нет';
+
+  const listTitle = onlyGoing
+    ? `Идут гулять (${going.length}):`
+    : `Зарегистрированные друзья (${users.length}):`;
 
   app.innerHTML = `
     <div class="card">
@@ -391,31 +845,43 @@ function renderMain(app, current) {
         <button class="choice no ${me.status === 'no' ? 'active' : ''}"       data-status="no">❌ Нет, не пойду</button>
       </div>
 
+      <button class="walk-btn ${onlyGoing ? 'active' : ''}" id="walkBtn">
+        ${onlyGoing
+          ? `👥 Показать всех (${users.length})`
+          : `🚶 Кто пойдёт гулять? (${countYes})`}
+      </button>
+
       <div class="stats">
         <div class="stat green"><b>${countYes}</b>идут</div>
         <div class="stat gray"><b>${countPending}</b>не решили</div>
         <div class="stat red"><b>${countNo}</b>не идут</div>
       </div>
 
-      <div class="list-title">Зарегистрированные друзья (${users.length}):</div>
-      <ul class="list">${listHTML || '<div class="empty">Пока никого нет</div>'}</ul>
+      <div class="list-title">${listTitle}</div>
+      <ul class="list">
+        ${listHTML || `<div class="empty">${emptyText}</div>`}
+      </ul>
     </div>
   `;
 
-  // выбор ответа
   app.querySelectorAll('.choice').forEach(btn => {
     btn.addEventListener('click', () => {
-      const users = getUsers();
-      const user = users.find(u => u.name === current);
+      const list = getUsers();
+      const user = list.find(u => u.name === current);
       if (!user) return;
       user.status = btn.dataset.status;
-      saveUsers(users);
+      saveUsers(list);
       render();
     });
   });
 
-  // выход
+  document.getElementById('walkBtn').addEventListener('click', () => {
+    onlyGoing = !onlyGoing;
+    render();
+  });
+
   document.getElementById('logoutBtn').addEventListener('click', () => {
+    onlyGoing = false;
     setCurrent(null);
     render();
   });
